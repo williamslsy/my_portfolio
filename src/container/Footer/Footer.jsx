@@ -37,6 +37,7 @@ const Footer = () => {
         setLoading(false);
         setIsFormSubmitted(true);
       })
+      // eslint-disable-next-line
       .catch((err) => console.log(err));
   };
 
