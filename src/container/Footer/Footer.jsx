@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { BsTwitter } from 'react-icons/bs';
 import { images } from '../../constants';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { client } from '../../client';
@@ -52,9 +52,9 @@ const Footer = () => {
             donwaleyb@gmail.com
           </a>
         </div>
-        <div className="app__footer-card">
-          <img src={images.mobile} alt="phone" />
-          {/* <a href="tel:+1 (123) 456-7890" className="p-text">+1 (123) 456-7890</a> */}
+        <div className="app__footer-card" id="dev">
+          <BsTwitter style={{ width: '40px', height: '40px', color: 'magenta', margin: '1px 7px' }} />
+          <a href="https://twitter.com/dev_waliba" className="p-text">@dev_waliba</a>
         </div>
       </div>
       {!isFormSubmitted ? (

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ReactTooltip from 'react-tooltip';
+import './modal.css';
+// import { images } from '../../constants';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
+import { Modal } from './Modal';
 
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
-
   useEffect(() => {
     const query = '*[_type == "experiences"]';
     const skillsQuery = '*[_type == "skills"]';
-
     client.fetch(query).then((data) => {
       setExperiences(data);
     });
@@ -22,7 +23,10 @@ const Skills = () => {
       setSkills(data);
     });
   }, []);
-
+  const [showModal, setShowModal] = useState(false);
+  const openModal = () => {
+    setShowModal(true);
+  };
   return (
     <>
       <h2 className="head-text">Skills & Experiences</h2>
@@ -82,6 +86,11 @@ const Skills = () => {
               </motion.div>
             </motion.div>
           ))}
+          {/* <button type="button" onClick={showResume} src={images.resume}> View Resume</button> */}
+        </div>
+        <div className="App">
+          <button type="button" onClick={openModal}>View Resume</button>
+          {showModal ? <Modal setShowModal={setShowModal} /> : null}
         </div>
       </div>
     </>
@@ -93,3 +102,13 @@ export default AppWrap(
   'skills',
   'app__whitebg',
 );
+
+// export function App() {
+//   const [showModal, setShowModal] = useState(false);
+//   const openModal = () => {
+//     setShowModal(true);
+//   };
+//   return (
+
+//   );
+// }
